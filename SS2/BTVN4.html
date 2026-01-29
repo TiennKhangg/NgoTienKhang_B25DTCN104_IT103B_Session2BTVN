@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BTVN4</title>
+</head>
+<body>
+    <script>
+        let bookName = prompt("Nhập tên sách:");
+        let bookCategory = prompt("Nhập thể loại sách (Khoa học, Lịch sử, Văn học, Truyện):");
+        let bookStatus = prompt("Nhập tình trạng sách (co san / da muon):");
+
+        if (bookCategory === "Khoa học" || bookCategory === "Lịch sử") {
+            if (bookStatus === "co san") {
+                alert("Sách này có sẵn trong thư viện");
+            } else {
+                alert("Sách đã được mượn");
+            }
+        } else if (bookCategory === "Văn học" || bookCategory === "Truyện") {
+            alert("Sách này có thể đọc giải trí");
+        } else {
+            alert("Thể loại sách không hợp lệ");
+        }
+    </script>
+</body>
+</html>

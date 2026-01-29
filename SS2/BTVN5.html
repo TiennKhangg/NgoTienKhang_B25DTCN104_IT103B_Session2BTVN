@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BTVN5</title>
+</head>
+<body>
+    <script>
+        let bookName = prompt("Nhập tên sách:");
+        let bookStatus = prompt("Nhập trạng thái sách (co san / da muon):");
+        let publishYear = parseInt(prompt("Nhập năm xuất bản:"));
+
+        let currentYear = 2026;
+        let bookAge = currentYear - publishYear;
+
+        if (bookStatus === "co san" && bookAge <= 5) {
+            alert("Sách này mới và có sẵn để mượn");
+        } else if (bookStatus === "da muon" && bookAge <= 10) {
+            alert("Sách này đã mượn nhưng khá mới, có thể mượn lại sau");
+        } else if (bookStatus === "da muon" && bookAge > 10) {
+            alert("Sách này đã mượn và khá cũ");
+        } else if (bookStatus === "co san" && bookAge > 5) {
+            alert("Sách này có sẵn nhưng đã lâu năm");
+        } else {
+            alert("Thông tin sách không hợp lệ");
+        }
+    </script>
+</body>
+</html>

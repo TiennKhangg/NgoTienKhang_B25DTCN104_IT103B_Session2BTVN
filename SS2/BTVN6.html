@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BTVN6</title>
+</head>
+<body>
+    <script>
+        let bookName = prompt("Nhập tên sách:");
+        let borrowerName = prompt("Nhập tên người mượn:");
+        let bookStatus = prompt("Nhập tình trạng sách (co san / da muon / khong co san):");
+        let borrowDays = parseInt(prompt("Nhập số ngày mượn sách:"));
+        let hasLibraryCard = prompt("Bạn có thẻ thư viện không? (co / khong):");
+
+        if (bookStatus === "co san" && hasLibraryCard === "co") {
+            alert("Chúc mừng, bạn có thể mượn sách này");
+        } 
+        else if (bookStatus === "da muon" && borrowDays < 30) {
+            if (hasLibraryCard === "co") {
+                alert("Sách đang được mượn, vui lòng đợi đến khi trả lại");
+            } else if (hasLibraryCard === "khong") {
+                alert("Bạn không thể mượn sách nếu không có thẻ thư viện");
+            } else {
+                alert("Thông tin không hợp lệ, vui lòng nhập lại");
+            }
+        } 
+        else if (bookStatus === "khong co san") {
+            alert("Sách này hiện tại không có sẵn trong thư viện, bạn có thể đăng ký mượn sau");
+        } 
+        else {
+            alert("Thông tin không hợp lệ, vui lòng nhập lại");
+        }
+    </script>
+</body>
+</html>

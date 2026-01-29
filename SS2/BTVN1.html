@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTVN1</title>
+</head>
+<body>
+    <script>
+        let name = prompt("Nhập tên sách :");
+        let author = prompt("Nhập tên tác giả :");
+        let year = parseInt( prompt("Nhập năm xuất bản :"));
+        let thisYear = 2026;
+        
+        if(year == thisYear){
+            alert("Đây là sách mới");
+        
+        } else if(thisYear - year <= 5){
+            alert("Đây là sách khá mới");
+        } else{
+            alert("Đây là sách cũ");
+        }
+        
+    </script>
+</body>
+</html>
