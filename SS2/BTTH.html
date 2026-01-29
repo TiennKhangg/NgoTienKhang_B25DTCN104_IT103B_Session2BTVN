@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BTTH</title>
+</head>
+<body>
+    <script>
+        let userName = prompt("Nhập tên người dùng:");
+        let role = prompt("Nhập vai trò (admin / student / guest):");
+        let balance = parseInt(prompt("Nhập số dư tài khoản:"));
+        let cardStatusInput = prompt("Nhập trạng thái thẻ (true nếu hoạt động):");
+        let overdueDays = parseInt(prompt("Nhập số ngày quá hạn trả sách:"));
+
+        role = role ? role.toLowerCase() : "";
+        let cardStatus = (cardStatusInput === "true");
+
+        switch (role) {
+            case "admin":
+                console.log("Chào Admin, bạn có toàn quyền hệ thống");
+                break;
+            case "student":
+                console.log("Chào sinh viên, bạn có thể mượn sách");
+                break;
+            case "guest":
+                console.log("Chào khách, bạn chỉ có thể đọc tại chỗ");
+                break;
+            default:
+                console.log("Lỗi: Vai trò không hợp lệ!");
+        }
+
+        let canBorrow = true;
+        let rejectReason = [];
+
+        if (!userName) {
+            canBorrow = false;
+            rejectReason.push("Tên người dùng bị trống");
+        }
+
+        if (!(role === "student" || role === "admin")) {
+            canBorrow = false;
+            rejectReason.push("Vai trò không được phép mượn sách");
+        }
+
+        if (!(balance > 0 && cardStatus === true)) {
+            canBorrow = false;
+            rejectReason.push("Số dư không đủ hoặc thẻ bị khóa");
+        }
+
+        if (canBorrow) {
+            console.log("ĐƯỢC PHÉP MƯỢN SÁCH");
+        } else {
+            console.log(`YÊU CẦU BỊ TỪ CHỐI. Lý do: ${rejectReason.join(", ")}`);
+        }
+
+        let fine = 0;
+
+        if (overdueDays <= 0) {
+            console.log("Cảm ơn bạn đã trả đúng hạn");
+        } else if (overdueDays <= 5) {
+            fine = overdueDays * 5000;
+            console.log(`Phí phạt: ${fine.toLocaleString()}đ`);
+        } else if (overdueDays <= 10) {
+            fine = overdueDays * 10000;
+            console.log(`Phí phạt: ${fine.toLocaleString()}đ`);
+        } else {
+            fine = 200000;
+            console.log(`Phí phạt: ${fine.toLocaleString()}đ`);
+            console.log(" TÀI KHOẢN BỊ KHÓA");
+        }
+
+        console.log(`
+    ===== TÓM TẮT =====
+    Tên người dùng: ${userName || "Không có"}
+    Vai trò: ${role}
+    Số dư: ${isNaN(balance) ? 0 : balance.toLocaleString()}đ
+    Trạng thái thẻ: ${cardStatus ? "Hoạt động" : "Bị khóa"}
+    Số ngày quá hạn: ${overdueDays}
+    ===================
+    `);
+    </script>
+</body>
+</html>
